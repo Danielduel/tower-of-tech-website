@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 //   return staticParams;
 // }
 
-export async function getStaticProps({ params: { routeName } }) {
+export async function getStaticProps({ params: { routeName }}: { params: { routeName: string }}) {
   const playlist = All.find(x => x.playlist.playlistTitle === routeName);
 
   return {
@@ -43,6 +43,7 @@ const SongItem: FC<{
       <div className="flex gap-4">
         <Image
           src={`https://cfcdn.beatsaver.com/${song.hash}.jpg`}
+          alt=""
           width="100"
           height="100"
         />
@@ -66,7 +67,7 @@ const SongItem: FC<{
 export default function Page(props: { playlist: Playlist }) {
   const { playlist } = props;
   return (
-    <RootLayout>
+    <RootLayout params={Promise.resolve({})}>
       <div className="container max-w-3xl m-auto">
         <div className="text-2xl my-4">
           <h1>{playlist.playlist.playlistTitle}</h1>
