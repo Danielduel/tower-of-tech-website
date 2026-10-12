@@ -11,8 +11,8 @@ const Playlist: FC<{ playlist: Playlist }> = ({
       <div className="ml-6 w-full">
         <h2 className="text-xl">{playlist.playlist.playlistTitle}</h2>
         <span className="block">Songs count:&nbsp;{playlist.songsCount}</span>
-        <span className="block">Speed: {playlist.displaySpeed}</span>
-        <span className="block">Tech: {playlist.displayComplexity}</span>
+        <span className="block">Speed:&nbsp;{playlist.displaySpeed}</span>
+        <span className="block">Tech:&nbsp;{playlist.displayComplexity}</span>
       </div>
       <div className="flex flex-col">
         <a className="underline block" href={`/playlist/${encodeURI(playlist.playlist.playlistTitle)}`}>Details</a>
