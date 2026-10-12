@@ -13,7 +13,7 @@ const Playlist: FC<{ playlist: Playlist }> = ({
         <span>Songs count:</span>&nbsp;<span>{playlist.songsCount}</span>
       </div>
       <div className="flex flex-col">
-        <a href={`/playlist/${encodeURI(playlist.playlist.playlistTitle)}`}>Details</a>
+        <a className="underline" href={`/playlist/${encodeURI(playlist.playlist.playlistTitle)}`}>Details</a>
       </div>
     </section>
   )
@@ -34,8 +34,9 @@ const PlaylistGroup: FC<{ playlists: Playlist[], title: string}> = ({
 export default function Home() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <h1 className="text-xl">Tower of Tech</h1>
+      <main className="w-full max-w-3xl flex-col items-center justify-between bg-white dark:bg-black sm:items-start">
+        <a className="underline" href="https://github.com/Danielduel/tower-of-tech/releases/latest">Latest release link</a>
+
         <PlaylistGroup playlists={Adep} title="Adep" />
         <PlaylistGroup playlists={Acc} title="Acc" />
         <PlaylistGroup playlists={Mid} title="Mid" />

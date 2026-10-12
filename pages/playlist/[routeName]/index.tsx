@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 //   return staticParams;
 // }
 
-export async function getStaticProps({ params: { routeName }}: { params: { routeName: string }}) {
+export async function getStaticProps({ params: { routeName } }: { params: { routeName: string } }) {
   const playlist = All.find(x => x.playlist.playlistTitle === routeName);
 
   return {
@@ -48,12 +48,17 @@ const SongItem: FC<{
           height="100"
         />
         <div className="flex-1">
-          {song.song.songName}
+          <span className="text-lg">{song.beatsaver?.metadata.songName ?? song.song.songName}</span><br />
+          {song.beatsaver?.metadata.songSubName}<br />
+          {song.beatsaver?.metadata.levelAuthorName ?? song.song.levelAuthorName}
         </div>
         <div className="min-w-32 text-right">
-          <pre>
-            !bsr {song.key}
-          </pre>
+          {song.key ? (
+            <pre>
+              !bsr {song.key}
+            </pre>
+          ) : "Missing on BeatSaver"
+          }
           {song.song.difficulties.map(x => (
             <div>
               {x.characteristic} {x.name}

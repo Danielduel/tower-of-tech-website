@@ -17,13 +17,40 @@ export const metadata: Metadata = {
   description: "Technical playlists",
 };
 
+function Header() {
+  return (
+    <div className="w-full flex">
+      <div className="container max-w-3xl py-10 mx-auto flex">
+        <a href="/">
+          <h1 className="text-3xl">Tower of Tech</h1>
+        </a> 
+        <a
+          href="https://ko-fi.com/danielduel"
+          target="_blank"
+          className="ml-auto"
+        >
+          <img
+            height="36"
+            className="border-0 h-9"
+            src="https://storage.ko-fi.com/cdn/kofi3.png?v=6"
+            alt="Buy Me a Coffee at ko-fi.com"
+          />
+        </a>
+      </div>
+    </div>
+  )
+}
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-white dark:bg-black">
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
