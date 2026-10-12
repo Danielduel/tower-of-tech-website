@@ -13,13 +13,14 @@ const Playlist: FC<{ playlist: Playlist }> = ({
         <span>Songs count:</span>&nbsp;<span>{playlist.songsCount}</span>
       </div>
       <div className="flex flex-col">
-        <a className="underline" href={`/playlist/${encodeURI(playlist.playlist.playlistTitle)}`}>Details</a>
+        <a className="underline block" href={`/playlist/${encodeURI(playlist.playlist.playlistTitle)}`}>Details</a>
+        <a className="underline block" href={`https://raw.githubusercontent.com/Danielduel/tower-of-tech/refs/heads/main/migrated/playlists/${playlist.mapping.fileName}`} download>Download</a>
       </div>
     </section>
   )
 }
 
-const PlaylistGroup: FC<{ playlists: Playlist[], title: string}> = ({
+const PlaylistGroup: FC<{ playlists: Playlist[], title: string }> = ({
   playlists,
   title
 }) => {
