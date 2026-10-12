@@ -57,7 +57,7 @@ const SongItem: FC<{
             <pre>
               !bsr {song.key}
             </pre>
-          ) : "Missing on BeatSaver"
+          ) : `Missing on BeatSaver: ${song.hash}`
           }
           {song.song.difficulties.map(x => (
             <div>
