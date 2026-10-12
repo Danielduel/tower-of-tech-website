@@ -1,3 +1,7 @@
+Support this project on Ko-fi<br><br><a href="https://ko-fi.com/danielduel" target="_blank"><img height="36" border="0" src="https://storage.ko-fi.com/cdn/kofi3.png?v=6" alt="Buy Me a Coffee at ko-fi.com" /></a>
+
+# Tower of Tech website
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
