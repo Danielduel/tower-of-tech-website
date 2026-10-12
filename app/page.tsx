@@ -7,10 +7,12 @@ const Playlist: FC<{ playlist: Playlist }> = ({
 }) => {
   return (
     <section className="flex container mb-6">
-      <Image src={playlist.rawGithubCoverUrl} width="100" height="100" alt={`Cover image for ${playlist.playlist.playlistTitle}`} />
+      <Image src={playlist.rawGithubCoverUrl} width="150" height="150" alt={`Cover image for ${playlist.playlist.playlistTitle}`} />
       <div className="ml-6 w-full">
         <h2 className="text-xl">{playlist.playlist.playlistTitle}</h2>
-        <span>Songs count:</span>&nbsp;<span>{playlist.songsCount}</span>
+        <span className="block">Songs count:&nbsp;{playlist.songsCount}</span>
+        <span className="block">Speed: {playlist.displaySpeed}</span>
+        <span className="block">Tech: {playlist.displayComplexity}</span>
       </div>
       <div className="flex flex-col">
         <a className="underline block" href={`/playlist/${encodeURI(playlist.playlist.playlistTitle)}`}>Details</a>
