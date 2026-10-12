@@ -43,6 +43,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Fetch playlist data
+        run: sh ./tools/imports.sh
+
       - name: Setup Pages
         id: setup_pages
         uses: actions/configure-pages@v5
