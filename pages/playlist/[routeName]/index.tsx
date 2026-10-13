@@ -65,7 +65,7 @@ const SongItem: FC<{
                 <span className="inline-block p-4 cursor-pointer peer-checked:text-red-400" onClick={
                   // todo: callback ssg bundleside?
                   () => {
-                    document.querySelectorAll('input[type=checkbox]').forEach(el => el.checked = false);
+                    document.querySelectorAll('input[type=checkbox]').forEach(el => (el as HTMLInputElement).checked = false);
                     navigator.clipboard.writeText(`!bsr ${song.key}`)
                   }
                 }>
