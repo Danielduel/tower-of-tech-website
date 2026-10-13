@@ -57,10 +57,10 @@ export default function Home() {
     <div className="flex flex-col flex-1 items-center justify-center font-sans">
       <main className="w-full max-w-3xl flex-col items-center justify-between sm:items-start">
         <section className="my-6">
-        <h2>Project</h2>
-        <a className="underline w-max block" href="https://github.com/Danielduel/tower-of-tech-website">Website repository (GitHub)</a>
-        <a className="underline w-max block" href="https://github.com/Danielduel/tower-of-tech">Playlist repository (GitHub)</a>
-        <a className="underline w-max block" href="https://github.com/Danielduel/tower-of-tech/releases/latest">Latest release link (Download all) (GitHub)</a>
+          <h2>Project</h2>
+          <a className="underline w-max block" href="https://github.com/Danielduel/tower-of-tech-website">Website repository (GitHub)</a>
+          <a className="underline w-max block" href="https://github.com/Danielduel/tower-of-tech">Playlist repository (GitHub)</a>
+          <a className="underline w-max block" href="https://github.com/Danielduel/tower-of-tech/releases/latest">Latest release link (Download all) (GitHub)</a>
         </section>
 
         <h2 className="text-2xl border-l-32 pl-4 block w-min">Listing</h2>
