@@ -10,28 +10,32 @@ import { FC } from "react";
 //   "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.ohmysimplemeals.com%2Fwp-content%2Fuploads%2F2025%2F07%2Ftoconverted.com_houda_57841_httpss.mj_.runDaFUNMkkYEY_A_stack_of_grilled_torti_11ebcd4d-7978-4a90-a17f-db5088ab54b9_3-675x675.webp&f=1&nofb=1&ipt=05ad8b22417417899e98c8863803af05d4998a40186b9711b4850b04c41a4f8b&ipo=images"
 // ]
 
+
 const Playlist: FC<{ playlist: Playlist }> = ({
   playlist
 }) => {
   const image = playlist.rawGithubCoverUrl;
-    // (playlist.displayComplexity === "Easy" && kebabs[0]) ||
-    // (playlist.displayComplexity === "Normal" && kebabs[1]) ||
-    // (playlist.displayComplexity === "Hard" && kebabs[2]) ||
-    // (playlist.displayComplexity === "Expert" && kebabs[3]) ||
-    // (playlist.displayComplexity === "Insane" && kebabs[4]);
+  // (playlist.displayComplexity === "Easy" && kebabs[0]) ||
+  // (playlist.displayComplexity === "Normal" && kebabs[1]) ||
+  // (playlist.displayComplexity === "Hard" && kebabs[2]) ||
+  // (playlist.displayComplexity === "Expert" && kebabs[3]) ||
+  // (playlist.displayComplexity === "Insane" && kebabs[4]);
   return (
-    <section className="flex container mb-6">
-      <Image src={image} width="150" height="150" alt={`Cover image for ${playlist.playlist.playlistTitle}`} />
-      <div className="ml-6 w-full">
-        <h2 className="text-xl">{playlist.playlist.playlistTitle}</h2>
-        <span className="block">Songs count:&nbsp;{playlist.songsCount}</span>
-        <span className="block">Speed:&nbsp;{playlist.displaySpeed}</span>
-        <span className="block">Tech:&nbsp;{playlist.displayComplexity}</span>
+    <section className="relative flex container border-white border hover:border-l-32 transition-all overflow-hidden">
+      <div className="w-full flex-1 flex flex-col">
+        <div className="ml-4 pt-4 h-auto flex-1">
+          <h2 className="text-xl">{playlist.playlist.playlistTitle}</h2>
+          <span className="block">Songs count:&nbsp;{playlist.songsCount}</span>
+          <span className="block">Speed:&nbsp;{playlist.displaySpeed}</span>
+          <span className="block">Tech:&nbsp;{playlist.displayComplexity}</span>
+        </div>
+        <hr className="mx-4 my-4 mb-auto" />
+        <div className="flex flex-row text-right ml-4 justify-end">
+          <a className="underline block p-4" href={`/playlist/${encodeURI(playlist.playlist.playlistTitle)}`}>Details</a>
+          <a className="underline block p-4" href={`https://raw.githubusercontent.com/Danielduel/tower-of-tech/refs/heads/main/migrated/playlists/${playlist.mapping.fileName}`} download>Download</a>
+        </div>
       </div>
-      <div className="flex flex-col">
-        <a className="underline block" href={`/playlist/${encodeURI(playlist.playlist.playlistTitle)}`}>Details</a>
-        <a className="underline block" href={`https://raw.githubusercontent.com/Danielduel/tower-of-tech/refs/heads/main/migrated/playlists/${playlist.mapping.fileName}`} download>Download</a>
-      </div>
+      <Image src={image} width="200" height="200" className="h-52 w-52" alt={`Cover image for ${playlist.playlist.playlistTitle}`} />
     </section>
   )
 }
@@ -41,8 +45,8 @@ const PlaylistGroup: FC<{ playlists: Playlist[], title: string }> = ({
   title
 }) => {
   return (
-    <section>
-      <h3 className="text-2xl mt-12 mb-3">{title}</h3>
+    <section className="pl-4 border-l py-4">
+      <h3 className="text-2xl mb-3">{title}</h3>
       {playlists.map(x => <Playlist key={x.playlist.playlistTitle} playlist={x} />)}
     </section>
   )
@@ -50,15 +54,21 @@ const PlaylistGroup: FC<{ playlists: Playlist[], title: string }> = ({
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="w-full max-w-3xl flex-col items-center justify-between bg-white dark:bg-black sm:items-start">
-        <a className="underline" href="https://github.com/Danielduel/tower-of-tech/releases/latest">Latest release link</a>
+    <div className="flex flex-col flex-1 items-center justify-center font-sans">
+      <main className="w-full max-w-3xl flex-col items-center justify-between sm:items-start">
+        <section className="my-6">
+        <h2>Project</h2>
+        <a className="underline w-max block" href="https://github.com/Danielduel/tower-of-tech-website">Website repository (GitHub)</a>
+        <a className="underline w-max block" href="https://github.com/Danielduel/tower-of-tech">Playlist repository (GitHub)</a>
+        <a className="underline w-max block" href="https://github.com/Danielduel/tower-of-tech/releases/latest">Latest release link (GitHub)</a>
+        </section>
 
-        <PlaylistGroup playlists={Adep} title="Adep" />
-        <PlaylistGroup playlists={Acc} title="Acc" />
-        <PlaylistGroup playlists={Mid} title="Mid" />
-        <PlaylistGroup playlists={Fas} title="Fas" />
-        <PlaylistGroup playlists={Sonic} title="Sonic" />
+        <h2 className="text-2xl border-l-32 pl-4 block w-min">Listing</h2>
+        <PlaylistGroup playlists={Adep} title="Slower maps" />
+        <PlaylistGroup playlists={Acc} title="Average pacing" />
+        <PlaylistGroup playlists={Mid} title="Quite fast" />
+        <PlaylistGroup playlists={Fas} title="Fast maps" />
+        <PlaylistGroup playlists={Sonic} title="Super fast maps" />
       </main>
     </div>
   );

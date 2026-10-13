@@ -40,32 +40,53 @@ const SongItem: FC<{
   song
 }) => {
     return (
-      <div className="flex gap-4">
+      <section className="relative flex container border-white border hover:rounded-2xl lg:hover:scale-105 hover:z-10 backdrop-blur-2xl transition-all overflow-hidden">
+        <div className="w-full flex-1 flex flex-col">
+          <div className="flex-1 p-4">
+            <span className="text-lg">{song.beatsaver?.metadata.songName ?? song.song.songName}</span><br />
+            {song.beatsaver?.metadata.songSubName}<br />
+            {song.beatsaver?.metadata.levelAuthorName ?? song.song.levelAuthorName}
+          </div>
+          <div className="text-right">
+            {song.song.difficulties.map(x => (
+              <div className="pr-4">
+                {x.characteristic} {x.name}
+              </div>
+            ))}
+          </div>
+          <hr className="mx-4 my-4 mb-auto" />
+          <div className="min-w-32 text-right flex flex-col ml-4 justify-end">
+            {song.key ?
+              <label>
+                <input type="checkbox" id={song.hash} className="hidden peer" />
+                <span className="transition-all opacity-0 peer-checked:opacity-100 mr-0 peer-checked:mr-4">
+                  (copied)
+                </span>
+                <span className="inline-block p-4 cursor-pointer peer-checked:text-red-400" onClick={
+                  // todo: callback ssg bundleside?
+                  () => {
+                    document.querySelectorAll('input[type=checkbox]').forEach(el => el.checked = false);
+                    navigator.clipboard.writeText(`!bsr ${song.key}`)
+                  }
+                }>
+                  <pre className="inline-block underline">
+                    !bsr {song.key}
+                  </pre>
+                </span>
+              </label> : (
+                <span className="p-4">
+                  Missing on BeatSaver
+                </span>
+              )
+            }
+          </div>
+        </div>
         <Image
           src={`https://cfcdn.beatsaver.com/${song.hash}.jpg`}
           alt=""
-          width="100"
-          height="100"
+          width="200" height="200" className="h-52 w-52"
         />
-        <div className="flex-1">
-          <span className="text-lg">{song.beatsaver?.metadata.songName ?? song.song.songName}</span><br />
-          {song.beatsaver?.metadata.songSubName}<br />
-          {song.beatsaver?.metadata.levelAuthorName ?? song.song.levelAuthorName}
-        </div>
-        <div className="min-w-32 text-right">
-          {song.key ? (
-            <pre>
-              !bsr {song.key}
-            </pre>
-          ) : "Missing on BeatSaver" // ${song.hash}
-          }
-          {song.song.difficulties.map(x => (
-            <div>
-              {x.characteristic} {x.name}
-            </div>
-          ))}
-        </div>
-      </div>
+      </section>
     )
   }
 
@@ -78,12 +99,12 @@ export default function Page(props: { playlist: Playlist }) {
           <h1>{playlist.playlist.playlistTitle}</h1>
         </div>
 
-        <div className="flex flex-col gap-4 w-full">
+        <div className="flex flex-col w-full">
           {playlist.resolvedSongs.map(song => (<SongItem song={song} />))}
         </div>
 
       </div>
-    </RootLayout>
+    </RootLayout >
   );
 }
 
