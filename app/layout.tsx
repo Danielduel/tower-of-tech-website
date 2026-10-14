@@ -23,7 +23,7 @@ function Header() {
       <div className="p-2 md:p-0 md:pb-2 md:pt-4 container max-w-3xl mx-auto flex">
         <a href="/">
           <h1 className="text-lg sm:text-3xl">Tower of Tech</h1>
-          <h4 className="text-xs sm:text-sm">9 out of 10 tech specialists recommends!</h4>
+          <h4 className="text-xs sm:text-sm">9 out of 10 tech specialists recommend!</h4>
         </a> 
         <a
           href="https://ko-fi.com/danielduel"
