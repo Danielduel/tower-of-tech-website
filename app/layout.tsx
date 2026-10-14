@@ -19,11 +19,11 @@ export const metadata: Metadata = {
 
 function Header() {
   return (
-    <div className="w-full flex">
-      <div className="container max-w-3xl mt-10 mx-auto flex">
+    <div className="w-full flex sticky top-0 z-50 backdrop-blur-sm bg-black/15">
+      <div className="p-2 md:p-0 md:pb-2 md:pt-4 container max-w-3xl mx-auto flex">
         <a href="/">
-          <h1 className="text-3xl">Tower of Tech</h1>
-          <h4 className="text-sm">9 out of 10 tech specialists recommends!</h4>
+          <h1 className="text-lg sm:text-3xl">Tower of Tech</h1>
+          <h4 className="text-xs sm:text-sm">9 out of 10 tech specialists recommends!</h4>
         </a> 
         <a
           href="https://ko-fi.com/danielduel"
